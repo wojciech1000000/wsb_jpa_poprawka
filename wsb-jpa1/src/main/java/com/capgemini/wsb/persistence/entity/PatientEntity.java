@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "PATIENT")
@@ -33,8 +32,8 @@ public class PatientEntity {
 	@Column(nullable = false, length = 10)
 	private LocalDate dateOfBirth;
 
-	@OneToMany(mappedBy = "patient", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	private Collection<VisitEntity> visits;
+	@OneToMany(mappedBy = "patient", orphanRemoval = true, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY) //Dodanie CascadeType.REMOVE oraz orphanRemoval = true
+    private Collection<VisitEntity> visits;
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinTable(

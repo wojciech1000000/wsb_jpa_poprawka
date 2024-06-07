@@ -1,9 +1,6 @@
 package com.capgemini.wsb.persistence.dao;
 
-import com.capgemini.wsb.persistence.dao.AddressDao;
-import com.capgemini.wsb.persistence.entity.AddressEntity;
 import com.capgemini.wsb.persistence.entity.DoctorEntity;
-import com.capgemini.wsb.persistence.entity.PatientEntity;
 import com.capgemini.wsb.persistence.enums.Specialization;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -56,7 +52,8 @@ public class DoctorDaoTest
     }
 
     @Test
-    public void shouldProveCorrectMappingDoctorToVisit() // TODO naprawic test bez zmiany danych testowych
+    @Transactional
+    public void shouldProveCorrectMappingDoctorToVisit()
     {
         // given
 
